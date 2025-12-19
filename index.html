@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Cumpleaños Papá ❤️</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Confetti Animation */
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: #f0f;
+            position: fixed;
+            top: -10px;
+            z-index: 1000;
+            animation: confetti-fall linear forwards;
+        }
+
+        @keyframes confetti-fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Header */
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            z-index: 10;
+            animation: fadeInUp 1.5s ease-out;
+        }
+
+        h1 {
+            font-size: 4.5rem;
+            color: white;
+            text-shadow: 3px 3px 10px rgba(0,0,0,0.3);
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+
+        .subtitle {
+            font-size: 2rem;
+            color: #fff;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 2rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-20px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Sections */
+        section {
+            min-height: 100vh;
+            padding: 80px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            margin-bottom: 50px;
+            text-align: center;
+            color: white;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+        }
+
+        /* Letter Section */
+        .letter-section {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .letter-card {
+            background: white;
+            padding: 60px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeInUp 1s ease-out;
+            line-height: 2;
+            font-size: 1.3rem;
+        }
+
+        .letter-card p {
+            margin-bottom: 25px;
+            color: #333;
+        }
+
+        .signature {
+            text-align: right;
+            font-style: italic;
+            margin-top: 40px;
+            font-size: 1.5rem;
+            color: #764ba2;
+        }
+
+        /* Photo Gallery Section */
+        .gallery-section {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        
+
+        .photo-img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+        }
+
+        .photo-caption {
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .photo-card {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: white;
+            cursor: pointer;
+        }
+
+        .photo-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+        }
+
+        .photo-placeholder {
+            width: 100%;
+            height: 350px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 1.2rem;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .photo-placeholder .icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        .photo-caption {
+            padding: 20px;
+            background: white;
+            text-align: center;
+            font-size: 1.1rem;
+            color: #333;
+            font-weight: bold;
+        }
+
+        /* Memories Timeline */
+        .timeline-section {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: white;
+            box-shadow: 0 0 10px rgba(255,255,255,0.5);
+        }
+
+        .timeline-item {
+            margin-bottom: 60px;
+            position: relative;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .timeline-item:nth-child(odd) {
+            padding-right: 50%;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            padding-left: 50%;
+            text-align: left;
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            position: relative;
+        }
+
+        .timeline-date {
+            font-size: 1.5rem;
+            color: #764ba2;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .timeline-text {
+            font-size: 1.2rem;
+            color: #333;
+            line-height: 1.8;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: white;
+            border: 4px solid #764ba2;
+            border-radius: 50%;
+            top: 30px;
+            box-shadow: 0 0 20px rgba(118, 75, 162, 0.5);
+        }
+
+        /* Reasons Section */
+        .reasons-section {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+        }
+
+        .reasons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .reason-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            text-align: center;
+            transition: transform 0.3s ease;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .reason-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .reason-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        .reason-title {
+            font-size: 1.5rem;
+            color: #764ba2;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .reason-text {
+            font-size: 1.1rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Wishes Section */
+        .wishes-section {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+        }
+
+        .wishes-container {
+            background: white;
+            padding: 60px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 900px;
+            margin: 0 auto;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .wish-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 35px;
+            padding: 25px;
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .wish-item:hover {
+            transform: translateX(10px);
+        }
+
+        .wish-icon {
+            font-size: 2.5rem;
+            margin-right: 25px;
+            min-width: 50px;
+        }
+
+        .wish-text {
+            font-size: 1.3rem;
+            color: #333;
+            line-height: 1.8;
+        }
+
+        /* Video Message Section */
+        .video-section {
+            background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
+        }
+
+        .video-container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .video-placeholder {
+            width: 100%;
+            height: 500px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        .video-placeholder .icon {
+            font-size: 6rem;
+            margin-bottom: 30px;
+        }
+
+        .video-text {
+            font-size: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .video-instructions {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .video-instructions h3 {
+            color: #764ba2;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .video-instructions ol {
+            margin-left: 25px;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .video-instructions li {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        /* Final Message Section */
+        .final-section {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            min-height: 100vh;
+        }
+
+        .final-card {
+            background: white;
+            padding: 80px 60px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .final-message {
+            font-size: 2rem;
+            color: #333;
+            line-height: 2;
+            margin-bottom: 40px;
+        }
+
+        .heart-animation {
+            font-size: 5rem;
+            animation: heartbeat 1.5s infinite;
+            margin: 30px 0;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            25% {
+                transform: scale(1.2);
+            }
+            50% {
+                transform: scale(1);
+            }
+        }
+
+        /* Balloons */
+        .balloon {
+            position: fixed;
+            bottom: -150px;
+            width: 80px;
+            height: 100px;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            animation: float-up 8s ease-in infinite;
+            z-index: 999;
+        }
+
+        .balloon::before {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 60px;
+            background: rgba(255,255,255,0.5);
+        }
+
+        @keyframes float-up {
+            to {
+                transform: translateY(-120vh) rotate(20deg);
+                opacity: 0;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .subtitle {
+                font-size: 1.3rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .letter-card {
+                padding: 30px;
+                font-size: 1.1rem;
+            }
+
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even) {
+                padding-left: 80px;
+                padding-right: 20px;
+                text-align: left;
+            }
+
+            .timeline-dot {
+                left: 30px;
+            }
+
+            .photo-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .wishes-container,
+            .final-card,
+            .video-container {
+                padding: 30px;
+            }
+
+            .final-message {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            margin-top: 30px;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+        }
+
+        /* Music Player */
+        .music-player {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: white;
+            padding: 20px;
+            border-radius: 50%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            cursor: pointer;
+            z-index: 1000;
+            transition: transform 0.3s ease;
+            width: 70px;
+            height: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .music-player:hover {
+            transform: scale(1.1);
+        }
+
+        .music-icon {
+            font-size: 2rem;
+            color: #764ba2;
+        }
+
+        .playing {
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="hero-content">
+            <h1>🎉 ¡FELIZ CUMPLEAÑOS PAPÁ! 🎉</h1>
+            <p class="subtitle">Hoy celebramos al mejor padre del mundo</p>
+        </div>
+        <div class="scroll-indicator">↓</div>
+    </header>
+
+    <!-- Letter Section -->
+    <section class="letter-section">
+        <div class="container">
+            <h2 class="section-title">💌 Una Carta Para Ti</h2>
+            <div class="letter-card">
+                <p>Querido Papá,</p>
+                <p>
+                    Hoy es un día muy especial porque celebramos tu vida, tu amor y todo lo que significas para mí. 
+                    No existen palabras suficientes para expresar lo agradecido que estoy de tenerte como padre.
+                </p>
+                <p>
+                    Cada día me enseñas con tu ejemplo lo que significa ser una buena persona. Tu fortaleza, 
+                    tu dedicación y tu amor incondicional son el mejor regalo que he recibido en la vida.
+                </p>
+                <p>
+                    Gracias por cada sacrificio, por cada consejo, por cada abrazo y por estar siempre ahí cuando 
+                    te he necesitado. Eres mi héroe, mi mentor y mi mejor amigo.
+                </p>
+                <p>
+                    En este día tan especial, quiero que sepas que te amo con todo mi corazón y que siempre 
+                    estaré aquí para ti, así como tú siempre has estado para mí.
+                </p>
+                <p class="signature">Con todo mi amor, tu hijo que te adora ❤️</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Photo Gallery Section -->
+    <!-- Photo Gallery Section -->
+<section class="gallery-section">
+    <div class="container">
+        <h2 class="section-title">📸 Nuestros Momentos Inolvidables</h2>
+
+        <div class="photo-grid">
+
+            <div class="photo-card">
+                <img src="img/foto1.jpeg" alt="Momento especial" class="photo-img">
+                <div class="photo-caption">Momentos que atesoramos</div>
+            </div>
+
+            <div class="photo-card">
+                <img src="img/foto2.jpeg" alt="Recuerdo hermoso" class="photo-img">
+                <div class="photo-caption">Recuerdos inolvidables</div>
+            </div>
+
+            <div class="photo-card">
+                <img src="img/foto3.jpeg" alt="Un momento especial" class="photo-img">
+                <div class="photo-caption">Siempre en mi corazón</div>
+            </div>
+
+            <div class="photo-card">
+                <img src="img/foto4.jpeg" alt="Juntos somos más fuertes" class="photo-img">
+                <div class="photo-caption">La mejor compañía</div>
+            </div>
+
+            <div class="photo-card">
+                <img src="img/foto5.jpeg" alt="Risas y alegría" class="photo-img">
+                <div class="photo-caption">Felicidad pura</div>
+            </div>
+
+            <div class="photo-card">
+                <img src="img/foto6.jpeg" alt="Amor eterno" class="photo-img">
+                <div class="photo-caption">Amor eterno</div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+    <!-- Timeline Section -->
+    <section class="timeline-section">
+        <div class="container">
+            <h2 class="section-title">🕰️ Línea del Tiempo de Nuestros Recuerdos</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Mis Primeros Años</div>
+                        <p class="timeline-text">Recuerdo cuando me enseñaste a caminar, sosteniéndome de la mano y celebrando cada pequeño paso. Siempre estuviste ahí para levantarme cuando caía.</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">La Infancia</div>
+                        <p class="timeline-text">Esos días jugando juntos, tus historias antes de dormir y tus consejos que siempre guardé en mi corazón. Me enseñaste el valor de la familia.</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Creciendo Contigo</div>
+                        <p class="timeline-text">A medida que crecía, también crecía mi admiración por ti. Cada desafío que enfrentábamos juntos nos hacía más fuertes y unidos.</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Hoy y Siempre</div>
+                        <p class="timeline-text">Ahora entiendo todo lo que has hecho por mí. Eres mi inspiración y mi guía. Gracias por ser el mejor padre que alguien podría pedir.</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reasons Section -->
+    <section class="reasons-section">
+        <div class="container">
+            <h2 class="section-title">💖 Por Qué Eres el Mejor Papá</h2>
+            <div class="reasons-grid">
+                <div class="reason-card">
+                    <div class="reason-icon">💪</div>
+                    <h3 class="reason-title">Tu Fortaleza</h3>
+                    <p class="reason-text">Siempre has sido mi ejemplo de fuerza y perseverancia. Me enseñaste a nunca rendirme ante las adversidades.</p>
+                </div>
+
+                <div class="reason-card">
+                    <div class="reason-icon">❤️</div>
+                    <h3 class="reason-title">Tu Amor Incondicional</h3>
+                    <p class="reason-text">Tu amor no conoce límites. Siempre me has apoyado en cada decisión, celebrando mis triunfos y consolándome en mis derrotas.</p>
+                </div>
+
+                <div class="reason-card">
+                    <div class="reason-icon">🎓</div>
+                    <h3 class="reason-title">Tus Enseñanzas</h3>
+                    <p class="reason-text">Cada lección que me has dado ha moldeado quien soy hoy. Tus consejos son mi brújula en la vida.</p>
+                </div>
+
+                <div class="reason-card">
+                    <div class="reason-icon">😊</div>
+                    <h3 class="reason-title">Tu Sentido del Humor</h3>
+                    <p class="reason-text">Siempre sabes cómo hacerme reír, incluso en los momentos más difíciles. Tu alegría ilumina nuestro hogar.</p>
+                </div>
+
+                <div class="reason-card">
+                    <div class="reason-icon">🛡️</div>
+                    <h3 class="reason-title">Tu Protección</h3>
+                    <p class="reason-text">Me has protegido y cuidado desde el primer día. Contigo siempre me he sentido seguro y amado.</p>
+                </div>
+
+                <div class="reason-card">
+                    <div class="reason-icon">🌟</div>
+                    <h3 class="reason-title">Tu Ejemplo</h3>
+                    <p class="reason-text">Eres mi héroe y mi modelo a seguir. Aspiro a ser tan buena persona como tú lo eres cada día.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wishes Section -->
+    <section class="wishes-section">
+        <div class="container">
+            <h2 class="section-title">🎁 Mis Deseos Para Ti</h2>
+            <div class="wishes-container">
+                <div class="wish-item">
+                    <div class="wish-icon">🌈</div>
+                    <p class="wish-text">Que cada día de tu vida esté lleno de alegría, risas y momentos inolvidables con las personas que amas.</p>
+                </div>
+
+                <div class="wish-item">
+                    <div class="wish-icon">💪</div>
+                    <p class="wish-text">Que tengas salud para seguir disfrutando de todo lo que te apasiona y energía para cumplir cada uno de tus sueños.</p>
+                </div>
+
+                <div class="wish-item">
+                    <div class="wish-icon">🎯</div>
+                    <p class="wish-text">Que todos tus proyectos y metas se cumplan, porque te mereces alcanzar todo lo que te propongas.</p>
+                </div>
+
+                <div class="wish-item">
+                    <div class="wish-icon">🏠</div>
+                    <p class="wish-text">Que nuestro hogar siempre esté lleno de amor, unión y momentos especiales que podamos compartir juntos.</p>
+                </div>
+
+                <div class="wish-item">
+                    <div class="wish-icon">😌</div>
+                    <p class="wish-text">Que encuentres paz y felicidad en cada pequeño detalle de la vida, porque tu felicidad es mi felicidad.</p>
+                </div>
+
+                <div class="wish-item">
+                    <div class="wish-icon">⭐</div>
+                    <p class="wish-text">Que sepas siempre lo importante que eres para mí y cuánto te admiro. Eres mi estrella guía.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Final Message Section -->
+    <section class="final-section">
+        <div class="container">
+            <div class="final-card">
+                <h2 class="section-title" style="color: #764ba2;">Para Terminar...</h2>
+                <div class="heart-animation">❤️</div>
+                <p class="final-message">
+                    Papá, quiero que sepas que eres la persona más importante de mi vida. 
+                    Cada día agradezco al universo por haberme dado un padre como tú.
+                </p>
+                <p class="final-message">
+                    No importa cuántos años pasen, siempre serás mi héroe, mi guía y mi mejor amigo.
+                </p>
+                <p class="final-message" style="font-size: 2.5rem; font-weight: bold; color: #f5576c;">
+                    ¡TE AMO CON TODO MI CORAZÓN!
+                </p>
+                <div class="heart-animation">🎂🎉🎈</div>
+                <p style="font-size: 1.8rem; color: #764ba2; margin-top: 30px;">
+                    Que este año esté lleno de bendiciones, salud y felicidad.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Music Player Button -->
+    <div class="music-player" id="musicPlayer" onclick="toggleMusic()">
+        <div class="music-icon" id="musicIcon">🎵</div>
+    </div>
+
+    <script>
+        // Confetti Animation
+        function createConfetti() {
+            const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#feca57', '#ff9ff3', '#54a0ff'];
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                    document.body.appendChild(confetti);
+
+                    setTimeout(() => confetti.remove(), 5000);
+                }, i * 100);
+            }
+        }
+
+        // Create confetti on load and every 10 seconds
+        createConfetti();
+        setInterval(createConfetti, 10000);
+
+        // Floating Balloons
+        function createBalloon() {
+            const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#feca57', '#ff9ff3', '#54a0ff', '#ff6348', '#a29bfe'];
+            const balloon = document.createElement('div');
+            balloon.className = 'balloon';
+            balloon.style.left = Math.random() * 100 + '%';
+            balloon.style.background = colors[Math.floor(Math.random() * colors.length)];
+            balloon.style.animationDuration = (Math.random() * 4 + 6) + 's';
+            balloon.style.animationDelay = Math.random() * 2 + 's';
+            document.body.appendChild(balloon);
+
+            setTimeout(() => balloon.remove(), 10000);
+        }
+
+        // Create balloons periodically
+        setInterval(createBalloon, 2000);
+
+        // Music Player
+        let isPlaying = false;
+        function toggleMusic() {
+            const musicIcon = document.getElementById('musicIcon');
+            const musicPlayer = document.getElementById('musicPlayer');
+            
+            isPlaying = !isPlaying;
+            
+            if (isPlaying) {
+                musicIcon.textContent = '🎵';
+                musicPlayer.classList.add('playing');
+                // Aquí podrías agregar audio real si lo deseas
+                const audio = new Audio('audio1.mp3');
+                audio.play();
+            } else {
+                musicIcon.textContent = '🎵';
+                musicPlayer.classList.remove('playing');
+            }
+        }
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.querySelectorAll('.timeline-item, .reason-card, .photo-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(50px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Add special effects on page load
+        window.addEventListener('load', () => {
+            // Create initial burst of confetti
+            createConfetti();
+            
+            // Create initial balloons
+            for (let i = 0; i < 5; i++) {
+                setTimeout(createBalloon, i * 500);
+            }
+        });
+
+        // Photo card click effect
+        document.querySelectorAll('.photo-card').forEach(card => {
+            card.addEventListener('click', function() {
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 200);
+            });
+        });
+
+        // Add sparkle effect to headers
+        function addSparkle(element) {
+            const sparkle = document.createElement('span');
+            sparkle.textContent = '✨';
+            sparkle.style.position = 'absolute';
+            sparkle.style.fontSize = '2rem';
+            sparkle.style.animation = 'fadeOut 1s ease-out forwards';
+            sparkle.style.pointerEvents = 'none';
+            
+            const rect = element.getBoundingClientRect();
+            sparkle.style.left = (rect.left + Math.random() * rect.width) + 'px';
+            sparkle.style.top = (rect.top + Math.random() * rect.height) + 'px';
+            
+            document.body.appendChild(sparkle);
+            
+            setTimeout(() => sparkle.remove(), 1000);
+        }
+
+        // Add sparkles to section titles periodically
+        const titles = document.querySelectorAll('.section-title');
+        setInterval(() => {
+            titles.forEach(title => {
+                if (Math.random() > 0.5) {
+                    addSparkle(title);
+                }
+            });
+        }, 3000);
+
+        // Console message
+        console.log('%c¡Feliz Cumpleaños Papá! 🎉', 'font-size: 30px; color: #764ba2; font-weight: bold;');
+        console.log('%cEsta página fue hecha con mucho amor ❤️', 'font-size: 16px; color: #f5576c;');
+    </script>
+
+    <style>
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            to {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+        }
+    </style>
+
+</body>
+</html>
